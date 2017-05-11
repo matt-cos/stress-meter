@@ -10,26 +10,55 @@
 	  <style>
 	  	.user {
 	  		position: relative;
-	  		width: 100px;
-	  		height: 100px;
-	  		background-color: #ddd;
-	  		border-radius: 50%;
+	  		display: block;
+	  	}
+	  	.chart {
+	 /* 		width: 100px;
+	  		height: 50px;
+	  		background-color: green;*/
+	  		position: relative;
+			background: 
+			    conic-gradient(yellow 5%, 
+			      orange 0 15%, 
+			      red 0 25%,
+			      white 0 50%,
+			      white 0 75%,
+			      green 0 85%,
+			      blue 0 95%,
+			      yellow 0 100%
+			    );
+			  border-radius: 50%;
+			  width: 200px;
+			  height: 200px;
+			  float: left;
+			  /*transform:rotate(-90deg);*/
 	  	}
 	  	.meter {
-	  		width: 50px;
-	  		height: 2px;
-	  		background-color: red;
-	  		transform-origin: 100% 0;
-	  		position: absolute;
-	  		bottom: 40px;
+	  		width: 90px;
+	  		padding-right: 10px;
+			height: 5px;
+			background-color: #000;
+			position: absolute;
+			transform-origin: center right;
+			bottom: 50%;
+			/* left: 50%; */
+
 	  	}
 	  	.description {
-	  		position: absolute;
-	  		bottom: 0;
+	  		/*position: absolute;*/
+	  		/*bottom: 0;*/
 	  	}
 	  </style>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/conic-gradient.js"></script>
   </head>
   <body>
+
+
+<div class="pieContainer">
+     <div class="pieBackground"></div>sdvcmbfds
+     <div id="pieSlice1" class="hold"><div class="pie"></div></div>
+</div>
   	<?php
 		$servername = "localhost";
 		$username = "root";
@@ -52,7 +81,7 @@
 		if ($result->num_rows > 0) {
 		    // output data of each row
 		    while($row = $result->fetch_assoc()) {
-		        echo "<div class='user " . $row["name"] . "'><div class='meter'></div><div class='description'>" . $row["name"]. " is at level <span class='level-numerator'>" . $row["level"] . "</span></div></div>";
+		        echo "<div class='user " . $row["name"] . "'><div class='chart'><div class='meter'></div></div><div class='description'>" . $row["name"]. " is at level <span class='level-numerator'>" . $row["level"] . "</span></div></div>";
 		    }
 		} else {
 		    echo "0 results";
